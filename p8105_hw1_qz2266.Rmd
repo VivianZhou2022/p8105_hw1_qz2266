@@ -49,3 +49,20 @@ ggsave("scatterplot_penguin.pdf", height = 4, width = 6)
 
 
 
+# Problem 2
+
+## Create a data frame
+```{r create_df}
+prob2_df = 
+  tibble(
+    var_numeric = rnorm(10),
+    var_logic = var_numeric > 10,
+    var_char = c("My", "name", "is", "Vivian", "Zhou", "and", "I", "love", "data", "science"),
+    var_factor = factor(c("mild", "mild", "mild", "moderate", "moderate", "moderate", "moderate","severe", "severe", "severe"))
+  )
+prob2_df
+```
+
+
+
+
