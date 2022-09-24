@@ -37,3 +37,15 @@ The mean flipper length (mm) is `r mean(pull(penguins, flipper_length_mm), na.rm
 
 Other important variables include species, which is a `r class(pull(penguins, species))` variable and consists of `r nlevels(pull(penguins, species))` levels including `r levels(pull(penguins, species))`, and bill length, which is a `r class(pull(penguins, bill_length_mm))` variable, with the mean value of `r mean(pull(penguins, bill_length_mm), na.rm = TRUE)` mm, and the median value of `r median(pull(penguins, bill_length_mm), na.rm = TRUE)` mm. Moreover, the range of values for the penguin bill length is 
 (`r  range(pull(penguins, bill_length_mm), na.rm = TRUE)` mm).
+
+
+## Make a scatterplot and export the plot
+
+```{r scatterplot}
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point() + ggtitle("Penguin Flipper Length vs. Bill Length by Species")
+
+ggsave("scatterplot_penguin.pdf", height = 4, width = 6)
+```
+
+
+
