@@ -75,5 +75,21 @@ mean(pull(prob2_df, var_factor))
 
 I can only take the mean of numeric and logical variables but not character or factor variables.I got a warning message and returning NA when I was trying to take the mean of the character or factor variables.
 
+## Convert variables from one type to another
+
+```{r Converting_variables, results = 'hide'}
+as.numeric(pull(prob2_df, var_logic))
+as.numeric(pull(prob2_df, var_char))
+as.numeric(pull(prob2_df, var_factor))
+```
+
+The logical variable can be converted to a numeric type because it's binary: FALSE changes to 0 while TRUE changes to 1. 
+
+The factor variable can be converted to a numeric type based on its corresponding level: 1 changes to 1, moderate changes to 2 and severe changes to 3.
+
+However, the character variable cannot be converted to a numeric type and R will give a warning message and return NA. 
+
+It helps to explain why we could get a mean value for the logical variable. However, to get the mean value of a factor variable, we need to convert it to a numeric vector firstly. This may be because a mean value is not statistically meaningful to describe different levels of a categorical variable.  
+
 
 
