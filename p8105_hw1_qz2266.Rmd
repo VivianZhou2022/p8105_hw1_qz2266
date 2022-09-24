@@ -64,5 +64,16 @@ prob2_df
 ```
 
 
+## Mean of each variable
+
+```{r var_mean}
+mean(pull(prob2_df, var_numeric))
+mean(pull(prob2_df, var_logic))
+mean(pull(prob2_df, var_char))
+mean(pull(prob2_df, var_factor))
+```
+
+I can only take the mean of numeric and logical variables but not character or factor variables.I got a warning message and returning NA when I was trying to take the mean of the character or factor variables.
+
 
 
