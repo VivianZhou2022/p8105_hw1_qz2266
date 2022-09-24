@@ -5,26 +5,35 @@ date: "2022-09-23"
 output: github_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup}
+library(tidyverse)
 ```
 
-## R Markdown
+# Problem 1
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+## Descriptive summaries of the penguins dataset
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+```{r penguins}
+data("penguins", package = "palmerpenguins")
 
-```{r cars}
-summary(cars)
+ncol(penguins)
+colnames(penguins)
+nrow(penguins)
+mean(pull(penguins, flipper_length_mm), na.rm = TRUE)
+
+class(pull(penguins, species))
+nlevels(pull(penguins, species))
+levels(pull(penguins, species))
+
+class(pull(penguins, bill_length_mm))
+mean(pull(penguins, bill_length_mm), na.rm = TRUE)
+median(pull(penguins, bill_length_mm), na.rm = TRUE)
+range(pull(penguins, bill_length_mm), na.rm = TRUE)
 ```
 
-## Including Plots
+The penguins data set has `r ncol(penguins)` variables, including `r colnames(penguins)`.  There are `r nrow(penguins)` observations in total in this data set. 
 
-You can also embed plots, for example:
+The mean flipper length (mm) is `r mean(pull(penguins, flipper_length_mm), na.rm = TRUE)` after excluding two NAs.
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+Other important variables include species, which is a `r class(pull(penguins, species))` variable and consists of `r nlevels(pull(penguins, species))` levels including `r levels(pull(penguins, species))`, and bill length, which is a `r class(pull(penguins, bill_length_mm))` variable, with the mean value of `r mean(pull(penguins, bill_length_mm), na.rm = TRUE)` mm, and the median value of `r median(pull(penguins, bill_length_mm), na.rm = TRUE)` mm. Moreover, the range of values for the penguin bill length is 
+(`r  range(pull(penguins, bill_length_mm), na.rm = TRUE)` mm).
